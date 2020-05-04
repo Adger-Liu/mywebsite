@@ -183,7 +183,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.20</version>
+            <version>1.2.25</version>
         </dependency>
         <!-- jackson的包 -->
         <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
