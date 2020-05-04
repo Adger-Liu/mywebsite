@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Blog</title>
+    <link rel="shortcut icon" href="../../../static/images/icon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1736546_je16bp52d5.css">
+    <script src="../../../static/bootstrap-3.3.7-dist/js/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="../../../static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="../../../static/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <style>
+    body {
+      /*background-color: #eee;*/
+      background: url("../../../static/images/bg.gif")no-repeat;
+      font-family: sans-serif;
+      background-size: cover;
+      overflow-X: hidden;
+    }
+    .container {
+      margin-top: 20px;
+    }
+    p{
+      margin: 0;
+      padding: 0;
+    }
+    /* 导航条默认active的背景效果改变 */
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+      background-color: rgba(217,123,231,0.5);
+      color: white;
+    }
+    /* 导航条a标签默认的颜色 */
+    .navbar-default .navbar-nav>li>a{
+      color: black;
+    }
+    /* 导航条默认的边距 */
+    .navbar{
+      border: none;
+      border-radius: 0;
+    }
+    /* 导航条默认的背景样式 */
+    .navbar-default{
+      background: hsl(183, 97%, 27%);
+      color: white;
+    }
+    .dropdown-menu>li{
+      margin: 0;
+      padding: 0;
+    }
+    .dropdown-menu>li>a{
+      background-color: white;
+    }
+    .dropdown-menu>li>a:hover {
+      background-color: coral;
+    }
+    #serchFont{
+      display: inline-block;
+      line-height: 50px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: .5s;
+    }
+    #serchFont:hover{
+      font-size: 30px;
+      color: black;
+    }
+    @media screen and (min-width: 300px) {
+      #serchFont {
+        padding-left: 10px;
+      }
+    }
+    @media screen and (max-width: 300px) {
+      #serchFont {
+        padding-left: 0px;
+      }
+    }
+    .progress{
+      margin-top: -20px;
+      border-radius: 0px;
+      height: 20px;
+    }
+    #carousel-example-generic{
+      margin-top: -20px;
+    }
+    #carousel-example-generic  .carousel-inner > .item > img {
+      display: block;
+      width:100%;
+      height: 150px;
+      background-size: cover;
+      background-color: rgba(123,123,123,0);
+    }
+  </style>
+</head>
+<body id="body" style="overflow-y:scroll;">
+    <!-- 音频区域 -->
+    <audio src="../../../static/audio/1.mp3" id="myaudio"></audio>
+
+    <!-- 导航区域 -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+              <img src="../../../static/images/icon/favicon.ico" alt="icon" style="width: 30px;height: 30px;margin-top: -4px">
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#" class="glyphicon glyphicon-home">首页<span class="sr-only">(current)</span></a></li>
+              <li class=""><a href="#" class="glyphicon glyphicon-file">技术文章<span class="sr-only">(current)</span></a></li>
+              <li><a href="#" class="glyphicon glyphicon-user">程序人生</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle glyphicon glyphicon-send" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">生活<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" class="glyphicon glyphicon-calendar">有趣的事</a></li>
+                  <li><a href="#" class="glyphicon glyphicon-tags">留言板</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <span class="iconfont icon-49" id="serchFont"></span>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" class="glyphicon glyphicon-map-marker">关于我</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" class="glyphicon glyphicon-user">登录</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#" class="glyphicon glyphicon-pencil">写日记</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- 进度条区域 -->
+    <div id="prog" class="progress">
+      <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+        <span class="sr-only">60% Complete (warning)</span>
+      </div>
+    </div>
+
+    <!-- 主页内容区域 轮播图区域 -->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <img src="../../../static/images/lun.png" alt="轮播图" title="哈哈图片不出来了吧">
+              <div class="carousel-caption">
+                每个再牛逼的人物，都像傻逼一样的坚持
+              </div>
+            </div>
+            <div class="item">
+              <img src="../../../static/images/lunbo.png" alt="轮播图" title="哈哈图片不出来了吧">
+              <div class="carousel-caption">adger
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+    <div class="clearfix"></div>
+
+    <!-- 模态框区域 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style=" overflow:hidden;">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">进入此网站须知事项</h4>
+          </div>
+          <div class="modal-body">
+            <p><b>1、</b>不要因为怕被玫瑰的刺伤到你，就不敢去摘玫瑰。</p> 
+            <p><b>2、</b>永远要记得，成功的决心远胜于任何东西。 </p> 
+            <p><b>4、</b>放弃该放弃的是无奈，放弃不该放弃的是无能；不放弃该放弃的是无知，不放弃不该放弃的是执着。</p> 
+            <p><b>5、</b>生命里最重要的事情是要有个远大的目标，并借助才能与坚毅来完成它。 </p> 
+            <p><b>6、</b>天下最宝贵的，莫如时日；天下最能奢侈的，莫如浪费时日。  </p> 
+            <p><b>7、</b>平凡的脚步也可以走完伟大的行程。</p> 
+            <p><b>9、</b>宝剑锋从磨砺出，梅花香自苦寒来。</p> 
+            <p><b>10、</b>暗自伤心，不如立即行动。  </p> 
+            <p><b>12、</b>人生最大的喜悦是每个人都说你做不到，你却完成它了！   </p> 
+            <p><b>13、</b>天才就是无止境刻苦勤奋的能力。  </p> 
+            <p><b>14、</b>无论才能知识多么卓著，如果缺乏热情，则无异纸上画饼充饥，无补于事。  </p> 
+            <p><b>15、</b>琴弦松驰，弹不出动听的乐曲；生活散漫，点不燃生命的 </p> 
+            <p><b>16、</b>每个牛逼人物的背后都有段苦逼的岁月，只要像傻B一样坚持，终会成功</p> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" onclick="player();" data-dismiss="modal">点击听一首歌</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主页文章内容区域 -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+              Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+              Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+              Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+              Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+              Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+          </div>
+        </div>
+
+        <!-- 旁边还剩的三格 -->
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">Panel heading without title</div>
+            <div class="panel-body">
+              Panel content
+            </div>
+            <div class="panel-footer">Panel footer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 底部 -->
+    <footer class="modal-footer">
+      <p class="text-center">日月盈昃，辰宿列张，寒来暑往，秋收冬藏。</p>
+      <p class="text-center">Copyright © 2020 . All rights Adger</p>
+      <p class="text-center">本网站所属权利 刘杰</p>
+    </footer>
+    <script>
+        function player() {
+            /* 音乐播放事件 */
+            var audio = document.getElementById('myaudio');
+            /* 生成一个1到8之间（包括1和8）的随机数，可以这样编码 我这里只放八首歌*/
+            var num = Math.floor(Math.random() * 8 + 1);
+            audio.src = "../../../static/audio/"+num+".mp3";
+            if (audio !== null) {
+                //检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+                if (audio.paused) {
+                    audio.play();//audio.play();// 这个就是播放
+                } else {
+                    audio.pause();// 这个就是暂停
+                }
+            }
+        };
+
+        /*导航条点击哪个就激活哪个*/
+        $(document).ready(function () {
+            $('.navbar li').click(function(e) {
+                $('.navbar li').removeClass('active');
+                var $this = $(this);
+                if (!$this.hasClass('active')) {
+                    $this.addClass('active');
+                }
+                e.preventDefault();
+            });
+        });
+
+        /* 禁用空白处点击关闭 */
+        $('#myModal').modal({
+            backdrop: 'static',
+            keyboard: false,//禁止键盘
+            show: false
+        });
+
+        /* 页面 就开始弹出 模态框 */
+        $('#myModal').modal();
+        $(document).ready(function () {
+            $("#select").bind("change",function(){
+                if($(this).val()==0){
+                    return;
+                }
+                else{
+                    $("p").text($(this).val());
+                }
+            });
+        });
+
+        /* 进度条实现 */
+        $(document).ready(function(){
+            var value = 0;
+            var time = 50;
+            //进度条复位函数
+            function reset() {
+                value = 0
+                $("#prog").removeClass("progress-bar-success").css("width", "0%");
+            }
+            //百分数增加，0-30时为红色，30-60为黄色，60-90为蓝色，>90为绿色
+            function increment() {
+                value += 1;
+                $("#prog").css("width", value + "%").text(value + "%");
+                if (value >= 0 && value <= 30) {
+                    $("#prog").addClass("progress-bar-danger");
+                }
+                else if (value >= 30 && value <= 60) {
+                    $("#prog").removeClass("progress-bar-danger");
+                    $("#prog").addClass("progress-bar-warning");
+                }
+                else if (value >= 60 && value <= 90) {
+                    $("#prog").removeClass("progress-bar-warning");
+                    $("#prog").addClass("progress-bar-info");
+                }
+                else if (value >= 90 && value < 100) {
+                    $("#prog").removeClass("progress-bar-info");
+                    $("#prog").addClass("progress-bar-success");
+                }
+                else {
+                    setTimeout(reset, 3000);
+                    return;
+                }
+                st = setTimeout(increment, time);
+            }
+            setInterval(function () {
+                increment();
+            },6000);
+        });
+    </script>
+</body>
+</html>

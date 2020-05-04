@@ -1,0 +1,102 @@
+a{
+    text-decoration: none;
+}
+body,h1{
+    margin:0;
+    padding:0;
+}
+html{
+    width:100%;
+    height:100%;
+    background: url("../images/bg.gif")no-repeat;
+    background-size: 100% 100%;
+}
+body{
+    overflow-x: hidden;
+    font-family: sans-serif;
+}
+.containe{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transition: 2s;
+}
+.containe{
+    width: 400px;
+    padding:40px;
+    transform: translate(-50%,-50%);
+    background:rgba(0, 0,0,.8);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
+.containe h1{
+    margin:0 0 30px;
+    padding:0;
+    color:white;
+    text-align: center;
+}
+.containe .input-groupp{
+    position: relative;
+}
+.containe .input-groupp input{
+    width: 100%;
+    padding:5px 0;
+    font-size: 15px;
+    color:#fff;
+    margin-bottom:30px;
+    border:none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background:transparent;
+}
+.containe .input-groupp label{
+    position: absolute;
+    top:0;
+    left:0;
+    padding:5px 0;
+    font-size: 15px;
+    color:#fff;
+    pointer-events: none;
+    transition: .5s;
+}
+.containe .input-groupp input:focus ~ label,.containe .input-groupp input:valid ~ label {
+    top:-18px;
+    left: 0;
+    color:#03a9f4;
+    font-size: 12px;
+}
+.containe input[type="button"]{
+    position: relative;
+    left:34%;
+    outline: none;
+}
+.containe input[type="button"]{
+    width:100px;
+    height:40px;
+    font-size:20px;
+    cursor:pointer;
+    box-sizing: border-box;
+    background:linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    border:none;
+    background-size: 400%;
+    border-radius: 30px;
+    color:white;
+}
+input[type="button"]:hover{
+    animation: bian 8s linear infinite;
+}
+@keyframes bian{
+    0%{
+        background-position: 0%;
+    }
+    100%{
+        background-position: 400%;
+    }
+}
+#verifcode{
+    display: none;
+}
+#verificationCode{
+    width: 200px;
+}
